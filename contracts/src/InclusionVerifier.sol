@@ -142,9 +142,12 @@ contract InclusionVerifier {
                 let lhs_y := calldataload(add(commitment_proof_pos, 0x20)) // C_Y
                 success := ec_add_tmp(success, lhs_x, lhs_y)
                 if iszero(success) {
-                    revert(0, 0)
+                    mstore(0, "EC addition failed")
+                    revert(0, 0x20)
+                    // This line does not revert invalid inclusion proof. Why?
+                    // revert(0, 0)
                 }
-                
+
                 mstore(LHS_X_MPTR, mload(0x80))
                 mstore(LHS_Y_MPTR, mload(0xa0))
 
