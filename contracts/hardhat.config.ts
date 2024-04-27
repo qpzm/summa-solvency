@@ -1,6 +1,7 @@
 import "@nomicfoundation/hardhat-toolbox";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
+import "@nomicfoundation/hardhat-foundry"
 import * as dotenv from "dotenv";
 
 dotenv.config();
